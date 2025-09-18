@@ -9,57 +9,57 @@ class User
     private string $email;
     private string $password;
 
-    public function __construct(string $name, string $email, hash $password)
+    public function __construct(string $name, string $email, string $password)
     {
         $this->setName($name);
         $this->setEmail($email);
-        $this->setSenha($password);
+        $this->setPassword($password);
     }
 
-    protected function getName(): void
+    protected function getName(): string
     {
+        return $this->name;
+    }
+
+    protected function setName(string $name): void
+    {
+        if (strlen($name) < 3) {
+            throw new InvalidArgumentException("O nome deve conter mais do que 2 letras");
+        } elseif (preg_match(self::NUMBERS_AND_SPACES, $name)) {
+            throw new InvalidArgumentException("O nome contém números ou espaços!!");
+        }
         $this->name = $name;
     }
 
-    protected function setName(string $name): string
+    protected function getEmail(): string
     {
-        if (strlen($name) < 3) {
-            echo "O nome deve conter mais do que 2 letras";
-        } elseif (preg_match(self::NUMBER_AND_SPACES, $name)) {
-            echo "O nome contém números ou espaços!!";
-        }
-        return $this->name = $name;
+        return $this->email;
     }
 
-    protected function getEmail(): void
+    protected function setEmail(string $email): void
     {
+        if (strlen($email) < 5){
+            throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!");
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumenetException("Esse email é invalido");
+        }
         $this->email = $email;
     }
 
-    protected function setEmail(string $email): string
+    protected function getPassword(): string
     {
-        if (strlen($email) < 5){
-            echo "O Email deve conter mais do que 5 caracteres!";
-        } elseif (!filter_var($email, self::FILTER_VALIDATE_EMAIL)) {
-            echo "Esse email é invalido";
-        }
-        return $this->email = $email;
+        return $this->password;
     }
 
-    protected function getPassword(): void
-    {
-        $this->password = $password;
-    }
-
-    protected function setPassword(string $password): string
+    protected function setPassword(string $password): void
     {
         if (strlen($password) < 8) {
-            echo "Minimo de 8 caracteres";
+            throw new InvalidArgumentException("Minimo de 8 caracteres");
         } elseif (!preg_match(self::STRONG_PASSWORD, $password)) {
-            echo "Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)";
+            throw new InvalidArgumentException("Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)");
         }
 
-        return password_hash($password, PASSWORD_DEFAULT);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 }
 ?>
