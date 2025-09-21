@@ -24,9 +24,9 @@ class User
     protected function setName(string $name): void
     {
         if (strlen($name) < 3) {
-            throw new InvalidArgumentException("O nome deve conter mais do que 2 letras");
+            throw new InvalidArgumentException("O nome deve conter mais do que 2 letras<br>");
         } elseif (preg_match(self::NUMBERS_AND_SPACES, $name)) {
-            throw new InvalidArgumentException("O nome contém números ou espaços!!");
+            throw new InvalidArgumentException("O nome contém números ou espaços!!<br>");
         }
         $this->name = $name;
     }
@@ -39,9 +39,9 @@ class User
     protected function setEmail(string $email): void
     {
         if (strlen($email) < 5){
-            throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!");
+            throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!<br>");
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumenetException("Esse email é invalido");
+            throw new InvalidArgumenetException("Esse email é invalido<br>");
         }
         $this->email = $email;
     }
@@ -54,9 +54,9 @@ class User
     protected function setPassword(string $password): void
     {
         if (strlen($password) < 8) {
-            throw new InvalidArgumentException("Minimo de 8 caracteres");
+            throw new InvalidArgumentException("Minimo de 8 caracteres<br>");
         } elseif (!preg_match(self::STRONG_PASSWORD, $password)) {
-            throw new InvalidArgumentException("Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)");
+            throw new InvalidArgumentException("Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)<br>");
         }
 
         $this->password = password_hash($password, PASSWORD_DEFAULT);
