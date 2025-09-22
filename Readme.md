@@ -13,7 +13,7 @@ João Pedro Pereira Guerra - 2006484
 ## Como rodar o projeto
 
 1. Copie a pasta do projeto para o diretório do seu servidor local (XAMPP):
-   C:\xampp\htdocs\usuarios
+   C:\xampp\htdocs\src\Index.php
 2. Certifique-se de que o Apache e o PHP estão rodando no XAMPP.
 3. Acesse o projeto pelo navegador:
 4. O arquivo principal para teste é o `index.php`, que já contém os casos de teste.
@@ -87,4 +87,5 @@ O sistema foi testado com os seguintes cenários:
 - Todas as senhas são armazenadas de forma **criptografada** utilizando `password_hash`.
 - O sistema utiliza apenas arrays para armazenar os usuários em memória (não há banco de dados).
 - É recomendado rodar o projeto em um ambiente local com PHP 7.4 ou superior.
+
 
