@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/User.php";
 
-class System
+class UserManager
 {
     private array $users = [];
     private int $nextId = 1;
@@ -11,7 +11,7 @@ class System
         if (in_array($email, array_column($this->users, "email"))) {
             echo "E-mail já está em uso! <br> ";
             return;
-        }
+        }ger
 
         try {
             $user = new User($name, $email, $password);
