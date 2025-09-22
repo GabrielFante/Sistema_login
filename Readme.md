@@ -4,6 +4,12 @@ Este é um sistema de login simples desenvolvido em PHP, utilizando classes para
 
 ---
 
+## Alunos
+Gabriel Fante Javarotti - 1990554
+João Pedro Pereira Guerra - 2006484
+
+---
+
 ## Como rodar o projeto
 
 1. Copie a pasta do projeto para o diretório do seu servidor local (XAMPP):
@@ -81,3 +87,4 @@ O sistema foi testado com os seguintes cenários:
 - Todas as senhas são armazenadas de forma **criptografada** utilizando `password_hash`.
 - O sistema utiliza apenas arrays para armazenar os usuários em memória (não há banco de dados).
 - É recomendado rodar o projeto em um ambiente local com PHP 7.4 ou superior.
+
