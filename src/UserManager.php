@@ -15,8 +15,8 @@ class UserManager
 
         try {
             $user = new User($name, $email, $password);
-        } catch (InvalidArgumentException $e) {
-            echo "Erro: " . $e->getMessage();
+        } catch (InvalidArgumentException $error) {
+            echo "Erro: " . $error->getMessage();
             return;
         }
         $this->users[] = [
@@ -45,8 +45,8 @@ class UserManager
                     $tempUser = new User($user["name"], $user["email"], $newPassword);
                     $user["password"] = $tempUser->getPassword();
                     echo "Senha redefinida com sucesso! <br> ";
-                } catch (InvalidArgumentException $e) {
-                    echo "Erro: " . $e->getMessage();
+                } catch (InvalidArgumentException $error) {
+                    echo "Erro: " . $error->getMessage();
                 }
                 return;
             }
@@ -54,3 +54,5 @@ class UserManager
         echo "Usuário não encontrado! <br> ";
     }
 }
+
+?>
