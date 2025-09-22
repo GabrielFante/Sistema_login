@@ -11,7 +11,7 @@ class UserManager
         if (in_array($email, array_column($this->users, "email"))) {
             echo "E-mail já está em uso! <br> ";
             return;
-        }ger
+        }
 
         try {
             $user = new User($name, $email, $password);
