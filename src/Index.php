@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/System.php";
+require_once __DIR__ . "/UserManager.php";
 
 $system = new System();
 
@@ -34,3 +34,4 @@ echo "<br>";
 
 echo "====Caso 5: Cadastro de usuário com e-mail duplicado==== <br> ";
 echo $system->Register("Maria Oliveira 2", "maria@email.com", "SenhaDiferente1!");
+
