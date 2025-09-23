@@ -35,5 +35,6 @@ echo $system->resetPassword("maria@email.com", "NovaSenha1@");
 echo "<br>";
 
 echo "====Caso 5: Cadastro de usuário com e-mail duplicado==== <br> ";
-echo $system->register("Maria Oliveira 2", "maria@email.com", "SenhaDiferente1!");
+$maria2 = new User ("Maria Oliveira", "maria@email.com", "SenhaDiferente1!");
+echo $system->register($maria2);
 ?>

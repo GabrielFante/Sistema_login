@@ -6,7 +6,7 @@ class Validator
 {
     public const STRONG_PASSWORD = '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).+$/';
 
-    public function emailValidate($email): void
+    public function validateEmail($email): void
     {
         if (strlen($email) < 5) {
             throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!");
@@ -16,7 +16,7 @@ class Validator
         $this->email = $email;
     }
 
-    public function nameValidate($name): void
+    public function validateName($name): void
     {
         if (strlen($name) < 3) {
             throw new InvalidArgumentException("O nome deve conter mais do que 2 letras");
@@ -26,7 +26,7 @@ class Validator
         $this->name = $name;
     }
 
-    public function passwordValidate($password): void
+    public function validatePassword($password): void
     {
         if (strlen($password) < 8) {
             throw new InvalidArgumentException("Minimo de 8 caracteres");
@@ -39,6 +39,16 @@ class Validator
     public function generateRandomId(): int
     {
         return random_int(1000, 9999);
+    }
+
+    public function validateUser(User $user)
+    {
+        foreach ($users as $user) {
+            if (in_array($user->getEmail(), array_column($this->users, $user->getEmail()))) {
+            echo "E-mail já está em uso! <br> ";
+            return;
+        }
+        }
     }
 }
 ?>

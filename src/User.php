@@ -23,7 +23,7 @@ class User extends Validator
 
     public function setName(string $name): void
     {
-        $this->nameValidate($name);
+        $this->validateName($name);
     }
 
     public function getEmail(): string {
@@ -32,7 +32,7 @@ class User extends Validator
 
     public function setEmail(string $email): void
     {
-        $this->emailValidate($email);
+        $this->validateEmail($email);
     }
 
     public function getPassword(): string {
@@ -41,7 +41,7 @@ class User extends Validator
 
     public function setPassword(string $password): void
     {
-        $this->passwordValidate($password);
+        $this->validatePassword($password);
     }
 
     public function getId(): int {

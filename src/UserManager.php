@@ -1,18 +1,21 @@
 <?php
 
 require_once __DIR__ . "/User.php";
+require_once __DIR__ . "/Validator.php";
 
 class UserManager
 {
     private array $users = [];
 
-    public function register(User $user): void
+    public function register(User $newUser): void
     {
-        if (in_array($user->getEmail(), array_column($this->users, $user->getEmail()))) {
-            echo "E-mail já está em uso! <br> ";
-            return;
+        foreach ($this->$users as $user) {
+            if (in_array($newUser->getEmail(), array_column($this->users, $user->getEmail()))) {
+                echo "E-mail já está em uso! <br> ";
+                return;
+            }
         }
-        $this->users[] = $user;
+        $this->users[] = $newUser;
         echo "Usuário cadastrado com sucesso! <br> ";
     }
 
