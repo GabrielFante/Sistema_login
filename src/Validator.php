@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 require_once __DIR__ . "/User.php";
 
@@ -69,7 +70,6 @@ class Validator
         foreach ($this->users as &$user) {
             if ($user->getEmail() === $email) {
                 try {
-                    
                     echo "Senha redefinida com sucesso! <br> ";
                 } catch (InvalidArgumentException $error) {
                     echo "Erro: " . $error->getMessage();
