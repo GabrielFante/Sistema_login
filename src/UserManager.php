@@ -11,13 +11,6 @@ class UserManager
             echo "E-mail já está em uso! <br> ";
             return;
         }
-
-        try {
-            $user = new User($name, $email, $password);
-        } catch (InvalidArgumentException $error) {
-            echo "Erro: " . $error->getMessage();
-            return;
-        }
         $this->users[] = $user;
         echo "Usuário cadastrado com sucesso! <br> ";
     }

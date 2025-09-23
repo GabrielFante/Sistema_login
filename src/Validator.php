@@ -4,7 +4,7 @@ require_once __DIR__ . "/User.php";
 
 class Validator
 {
-    public const STRONG_PASSWORD = '/^(?=.[0-9])(?=.[a-z])(?=.[A-Z])(?=.\W).+$/';
+    public const STRONG_PASSWORD = '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).+$/';
 
     public function emailValidate($email): void
     {
@@ -13,6 +13,7 @@ class Validator
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new InvalidArgumentException("Esse email é invalido");
         }
+        $this->email = $email;
     }
 
     public function nameValidate($name): void
@@ -32,7 +33,6 @@ class Validator
         } elseif (!preg_match(self::STRONG_PASSWORD, $password)) {
             throw new InvalidArgumentException("Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)");
         }
-
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 
@@ -41,3 +41,4 @@ class Validator
         return random_int(1000, 9999);
     }
 }
+?>

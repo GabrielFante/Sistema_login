@@ -17,12 +17,11 @@ echo "<br>";
 
 echo "====Caso 2: Cadastro com e-mail inválido==== <br> ";
 try {
-    echo $system->Register("Pedro", "pedro@@email", "Senha$123");
+    $pedro = new User("Pedro", "pedro@@email", "Senha$123");
 } catch (Exception $error) {
     echo "Erro: " . $error->getMessage();
 }
 
-echo "<br>";
 echo "<br>";
 
 echo "====Caso 3: Tentativa de login com senha errada==== <br> ";
