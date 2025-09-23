@@ -8,7 +8,7 @@ $maria = new User("Maria Oliveira", "maria@email.com", "Senha@123");
 
 echo "====Caso 1: Cadastro válido====<br>";
 try {
-    echo $system->Register($maria);
+    echo $system->register($maria);
 } catch (Exception $error) {
     echo "Erro: " . $error->getMessage();
 }
@@ -25,15 +25,15 @@ try {
 echo "<br>";
 
 echo "====Caso 3: Tentativa de login com senha errada==== <br> ";
-echo $system->Login("joao@email.com", "&rrada123");
+echo $system->login("joao@email.com", "&rrada123");
 
 echo "<br>";
 
 echo "====Caso 4: Reset de senha válido==== <br> ";
-echo $system->ResetPassword("maria@email.com", "NovaSenha1@");
+echo $system->resetPassword("maria@email.com", "NovaSenha1@");
 
 echo "<br>";
 
 echo "====Caso 5: Cadastro de usuário com e-mail duplicado==== <br> ";
-echo $system->Register("Maria Oliveira 2", "maria@email.com", "SenhaDiferente1!");
+echo $system->register("Maria Oliveira 2", "maria@email.com", "SenhaDiferente1!");
 ?>
