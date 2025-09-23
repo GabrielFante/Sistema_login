@@ -2,7 +2,6 @@
 
 require_once __DIR__ . "/Validator.php";
 
-
 class User extends Validator
 {
     public int $id;
@@ -17,7 +16,8 @@ class User extends Validator
         $this->setPassword($password);
     }
 
-    public function getName(): string {
+    public function getName(): string
+    {
         return $this->name; 
     }
 
@@ -26,7 +26,8 @@ class User extends Validator
         $this->validateName($name);
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email; 
     }
 
@@ -35,7 +36,8 @@ class User extends Validator
         $this->validateEmail($email);
     }
 
-    public function getPassword(): string {
+    public function getPassword(): string
+    {
         return $this->password; 
     }
 
@@ -44,7 +46,8 @@ class User extends Validator
         $this->validatePassword($password);
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id; 
     }
 
