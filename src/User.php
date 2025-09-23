@@ -14,9 +14,9 @@ class User
         $this->setPassword($password);
     }
 
-    public function getName(): string { return $this->name; }
-    public function getEmail(): string { return $this->email; }
-    public function getPassword(): string { return $this->password; }
+    public function getName(): string {
+        return $this->name; 
+    }
 
     private function setName(string $name): void
     {
@@ -28,6 +28,10 @@ class User
         $this->name = $name;
     }
 
+    public function getEmail(): string {
+        return $this->email; 
+    }
+
     private function setEmail(string $email): void
     {
         if (strlen($email) < 5) {
@@ -36,6 +40,10 @@ class User
             throw new InvalidArgumentException("Esse email é invalido");
         }
         $this->email = $email;
+    }
+
+    public function getPassword(): string {
+        return $this->password; 
     }
 
     private function setPassword(string $password): void
@@ -49,3 +57,4 @@ class User
         $this->password = password_hash($password, PASSWORD_DEFAULT);
     }
 }
+?>
