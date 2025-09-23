@@ -1,11 +1,14 @@
 <?php
 require_once __DIR__ . "/UserManager.php";
+require_once __DIR__ . "/User.php";
+require_once __DIR__ . "/Validator.php";
 
 $system = new UserManager();
+$maria = new User("Maria Oliveira", "maria@email.com", "Senha@123");
 
 echo "====Caso 1: Cadastro válido====<br>";
 try {
-    echo $system->Register("Maria Oliveira", "maria@email.com", "Senha@123");
+    echo $system->Register($maria);
 } catch (Exception $error) {
     echo "Erro: " . $error->getMessage();
 }

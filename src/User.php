@@ -1,8 +1,8 @@
 <?php
 
-class User
+class User extends Validator
 {
-    public const STRONG_PASSWORD = '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W).+$/';
+    private int $id;
     private string $name;
     private string $email;
     private string $password;
@@ -20,12 +20,7 @@ class User
 
     private function setName(string $name): void
     {
-        if (strlen($name) < 3) {
-            throw new InvalidArgumentException("O nome deve conter mais do que 2 letras");
-        } elseif (preg_match('/[0-9]/', $name)) {
-            throw new InvalidArgumentException("O nome contém números!!");
-        }
-        $this->name = $name;
+        $this->name = $this->nameValidate($name);
     }
 
     public function getEmail(): string {
@@ -34,12 +29,7 @@ class User
 
     private function setEmail(string $email): void
     {
-        if (strlen($email) < 5) {
-            throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!");
-        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException("Esse email é invalido");
-        }
-        $this->email = $email;
+        $this->email =$this->validateEmail($email);
     }
 
     public function getPassword(): string {
@@ -48,13 +38,16 @@ class User
 
     private function setPassword(string $password): void
     {
-        if (strlen($password) < 8) {
-            throw new InvalidArgumentException("Minimo de 8 caracteres");
-        } elseif (!preg_match(self::STRONG_PASSWORD, $password)) {
-            throw new InvalidArgumentException("Senha inválida, deve conter (caracteres especiais, pelo menos 1 letra minúscula e 1 numero)");
-        }
+        $this->validatePassword($password);
+    }
 
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
+    private function getId(): int {
+        return $this->id; 
+    }
+
+    private function setId(int $id): void
+    {
+        $this->id = $this->generateRandomId();
     }
 }
 ?>

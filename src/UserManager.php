@@ -5,10 +5,9 @@ require_once __DIR__ . "/User.php";
 class UserManager
 {
     private array $users = [];
-    private int $nextId = 1;
 
-    public function Register(string $name, string $email, string $password) {
-        if (in_array($email, array_column($this->users, "email"))) {
+    public function Register(User $user): void {
+        if (in_array($user->getEmail(), array_column($this->users, $user->getEmail()))) {
             echo "E-mail já está em uso! <br> ";
             return;
         }
@@ -19,12 +18,7 @@ class UserManager
             echo "Erro: " . $error->getMessage();
             return;
         }
-        $this->users[] = [
-            "id" => $this->nextId++,
-            "name" => $user->getName(),
-            "email" => $user->getEmail(),
-            "password" => $user->getPassword()
-        ];
+        $this->users[] = $user;
         echo "Usuário cadastrado com sucesso! <br> ";
     }
 
