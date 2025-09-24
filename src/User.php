@@ -18,7 +18,7 @@ class User extends Validator
 
     public function getName(): string
     {
-        return $this->name; 
+        return $this->name;
     }
 
     public function setName(string $name): void
@@ -28,7 +28,7 @@ class User extends Validator
 
     public function getEmail(): string
     {
-        return $this->email; 
+        return $this->email;
     }
 
     public function setEmail(string $email): void
@@ -38,7 +38,7 @@ class User extends Validator
 
     public function getPassword(): string
     {
-        return $this->password; 
+        return $this->password;
     }
 
     public function setPassword(string $password): void
@@ -48,7 +48,7 @@ class User extends Validator
 
     public function getId(): int
     {
-        return $this->id; 
+        return $this->id;
     }
 
     public function setId(int $id): void
