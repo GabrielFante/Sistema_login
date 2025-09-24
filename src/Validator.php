@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 require_once __DIR__ . "/User.php";
@@ -7,7 +8,7 @@ class Validator
 {
     public const STRONG_PASSWORD = '/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).+$/';
 
-    public function validateEmail($email): void
+    public function validateEmail(string $email): void
     {
         if (strlen($email) < 5) {
             throw new InvalidArgumentException("O Email deve conter mais do que 5 caracteres!");
@@ -17,7 +18,7 @@ class Validator
         $this->email = $email;
     }
 
-    public function validateName($name): void
+    public function validateName(string $name): void
     {
         if (strlen($name) < 3) {
             throw new InvalidArgumentException("O nome deve conter mais do que 2 letras");
@@ -27,7 +28,7 @@ class Validator
         $this->name = $name;
     }
 
-    public function validatePassword($password): void
+    public function validatePassword(string $password): void
     {
         if (strlen($password) < 8) {
             throw new InvalidArgumentException("Minimo de 8 caracteres");
@@ -54,7 +55,7 @@ class Validator
         echo "Usuário cadastrado com sucesso! <br> ";
     }
 
-    public function validateLogin($email, $password): void
+    public function validateLogin(string $email, string $password): void
     {
         foreach ($this->users as $user) {
             if ($user->getEmail() === $email && password_verify($password, $user->getPassword())) {
@@ -65,9 +66,9 @@ class Validator
         echo "Credenciais inválidas! <br> ";
     }
 
-    public function verifyPasswordReset($email, $newPassword): void
+    public function verifyPasswordReset(string $email, string $newPassword): void
     {
-        foreach ($this->users as &$user) {
+        foreach ($this->users as $user) {
             if ($user->getEmail() === $email) {
                 try {
                     echo "Senha redefinida com sucesso! <br> ";
